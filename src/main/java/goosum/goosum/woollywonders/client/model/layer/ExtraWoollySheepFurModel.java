@@ -2,19 +2,24 @@ package goosum.goosum.woollywonders.client.model.layer;
 
 import goosum.goosum.woollywonders.WoollyWonders;
 import goosum.goosum.woollywonders.common.entity.ExtraWoollySheepEntity;
-import net.minecraft.client.model.SheepFurModel;
+import net.minecraft.client.model.QuadrupedModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class ExtraWoollySheepFurModel extends SheepFurModel<ExtraWoollySheepEntity> {
-    public ExtraWoollySheepFurModel(ModelPart p_170900_) {
-        super(p_170900_);
-    }
+@OnlyIn(Dist.CLIENT)
+public class ExtraWoollySheepFurModel<T extends ExtraWoollySheepEntity> extends QuadrupedModel<T> {
+
 
     public static ModelLayerLocation EXTRA_WOOLLY_SHEEP_FUR_MODEL = new ModelLayerLocation(new ResourceLocation(WoollyWonders.MODID, "extra_woolly_sheep"), "fur");
+
+    public ExtraWoollySheepFurModel(ModelPart modelPart) {
+        super(modelPart, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
+    }
 
     public static LayerDefinition createFurLayer() {
         MeshDefinition meshdefinition = new MeshDefinition();

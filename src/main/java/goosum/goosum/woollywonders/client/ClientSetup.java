@@ -2,9 +2,12 @@ package goosum.goosum.woollywonders.client;
 
 import goosum.goosum.woollywonders.WoollyWonders;
 import goosum.goosum.woollywonders.client.model.layer.ExtraWoollySheepFurModel;
+import goosum.goosum.woollywonders.client.renderer.layer.ExtraWoollySheepFurLayer;
 import goosum.goosum.woollywonders.common.entity.WoollyWondersEntities;
 import goosum.goosum.woollywonders.client.model.ExtraWoollySheepModel;
 import goosum.goosum.woollywonders.client.renderer.ExtraWoollySheepRenderer;
+import net.minecraft.client.model.geom.LayerDefinitions;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,7 +25,7 @@ public class ClientSetup {
     @SubscribeEvent
     public static void onRegisterLayers(EntityRenderersEvent.RegisterLayerDefinitions event)
     {
-        event.registerLayerDefinition(ExtraWoollySheepModel.EXTRA_WOOLLY_SHEEP_LAYER, ExtraWoollySheepModel::createBodyLayer);
+        event.registerLayerDefinition(ExtraWoollySheepModel.EXTRA_WOOLLY_SHEEP, ExtraWoollySheepModel::createBodyLayer);
         event.registerLayerDefinition(ExtraWoollySheepFurModel.EXTRA_WOOLLY_SHEEP_FUR_MODEL, ExtraWoollySheepFurModel::createFurLayer);
     }
 
@@ -31,5 +34,8 @@ public class ClientSetup {
     {
         event.registerEntityRenderer(WoollyWondersEntities.EXTRA_WOOLLY_SHEEP.get(), ExtraWoollySheepRenderer::new);
     }
+
+
+
 
 }

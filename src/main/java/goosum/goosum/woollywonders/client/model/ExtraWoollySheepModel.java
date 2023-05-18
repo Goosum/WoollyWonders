@@ -9,12 +9,14 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.animal.Sheep;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class ExtraWoollySheepModel<T extends ExtraWoollySheepEntity> extends SheepModel<T> {
 
 
-    public static ModelLayerLocation EXTRA_WOOLLY_SHEEP_LAYER = new ModelLayerLocation(new ResourceLocation(WoollyWonders.MODID, "extra_woolly_sheep"), "body");
+    public static ModelLayerLocation EXTRA_WOOLLY_SHEEP = new ModelLayerLocation(new ResourceLocation(WoollyWonders.MODID, "extra_woolly_sheep"), "body");
 
     public static LayerDefinition createBodyLayer() {
         MeshDefinition meshdefinition = QuadrupedModel.createBodyMesh(12, CubeDeformation.NONE);

@@ -6,18 +6,18 @@ import goosum.goosum.woollywonders.client.renderer.layer.ExtraWoollySheepFurLaye
 import goosum.goosum.woollywonders.common.entity.ExtraWoollySheepEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.SheepRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
+public class ExtraWoollySheepRenderer extends MobRenderer<ExtraWoollySheepEntity, ExtraWoollySheepModel<ExtraWoollySheepEntity>> {
 
-public class ExtraWoollySheepRenderer extends SheepRenderer {
-
-    private static final ResourceLocation TEXTURE = new ResourceLocation(WoollyWonders.MODID, "textures/entity/extra_wooly_sheep.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(WoollyWonders.MODID, "textures/entity/extra_woolly_sheep.png");
 
     public ExtraWoollySheepRenderer(EntityRendererProvider.Context context) {
-        super(context);
+        super(context, new ExtraWoollySheepModel<>(context.bakeLayer(ExtraWoollySheepModel.EXTRA_WOOLLY_SHEEP)), 0.7F);
         this.addLayer(new ExtraWoollySheepFurLayer(this, context.getModelSet()));
-
     }
 
     public ResourceLocation getTextureLocation(ExtraWoollySheepEntity extraWoollySheepEntity) {
