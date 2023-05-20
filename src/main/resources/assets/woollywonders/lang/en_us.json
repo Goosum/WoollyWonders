@@ -1,5 +1,6 @@
 {
   "item.woollywonders.woolly_clump": "Woolly Clump",
   "itemGroup.woolly_wonders_tab": "Woolly Wonders",
-  "entity.woollywonders.extra_woolly_sheep": "Extra Woolly Sheep"
+  "entity.woollywonders.extra_woolly_sheep": "Extra Woolly Sheep",
+  "item.woollywonders.extra_woolly_sheep_spawn_egg": "Extra Woolly Sheep Spawn Egg"
 }
