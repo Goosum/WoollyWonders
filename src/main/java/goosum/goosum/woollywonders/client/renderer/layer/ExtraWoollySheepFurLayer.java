@@ -24,7 +24,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class ExtraWoollySheepFurLayer extends RenderLayer<ExtraWoollySheepEntity, ExtraWoollySheepModel<ExtraWoollySheepEntity>> {
-    public static final ResourceLocation EXTRA_WOOLLY_SHEEP_FUR_LOCATION = new ResourceLocation("textures/entity/layer/extra_woolly_sheep_fur.png");
+    public static final ResourceLocation EXTRA_WOOLLY_SHEEP_FUR_LOCATION = new ResourceLocation(WoollyWonders.MODID, "textures/entity/layer/extra_woolly_sheep_fur.png");
     private final ExtraWoollySheepFurModel<ExtraWoollySheepEntity> model;
     public static final ModelLayerLocation EXTRA_WOOLLY_SHEEP_FUR = new ModelLayerLocation(new ResourceLocation(WoollyWonders.MODID, "extra_woolly_sheep"), "fur");
 
