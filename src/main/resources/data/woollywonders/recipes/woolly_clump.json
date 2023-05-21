@@ -1,15 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###",
-    "###",
-    "###"
-  ],
   "key": {
     "#": {
-      "item": "minecraft:white_wool"
+      "tag": "woollywonders:stuffed_wool"
+    },
+    "X": {
+      "item": "minecraft:slime_ball"
     }
   },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
   "result": {
     "item": "woollywonders:woolly_clump"
   }

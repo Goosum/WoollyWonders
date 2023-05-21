@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "woollywonders:block/stuffed_light_gray_wool"
+  }
+}

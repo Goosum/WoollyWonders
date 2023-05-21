@@ -1,6 +1,7 @@
 package goosum.goosum.woollywonders;
 
 import com.mojang.logging.LogUtils;
+import goosum.goosum.woollywonders.common.block.WoollyWondersBlocks;
 import goosum.goosum.woollywonders.common.entity.WoollyWondersEntities;
 import goosum.goosum.woollywonders.common.item.WoollyWondersItems;
 import net.minecraftforge.api.distmarker.Dist;
@@ -30,6 +31,7 @@ public class WoollyWonders
 
         WoollyWondersItems.register(modEventBus);
         WoollyWondersEntities.register(modEventBus);
+        WoollyWondersBlocks.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

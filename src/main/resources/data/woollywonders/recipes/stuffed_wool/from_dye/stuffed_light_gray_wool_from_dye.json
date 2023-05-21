@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wool",
+  "ingredients": [
+    {
+      "item": "minecraft:light_gray_dye"
+    },
+    {
+      "item": "woollywonders:stuffed_white_wool"
+    }
+  ],
+  "result": {
+    "item": "woollywonders:stuffed_light_gray_wool"
+  }
+}

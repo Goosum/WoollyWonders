@@ -2,5 +2,21 @@
   "item.woollywonders.woolly_clump": "Woolly Clump",
   "itemGroup.woolly_wonders_tab": "Woolly Wonders",
   "entity.woollywonders.extra_woolly_sheep": "Extra Woolly Sheep",
-  "item.woollywonders.extra_woolly_sheep_spawn_egg": "Extra Woolly Sheep Spawn Egg"
+  "item.woollywonders.extra_woolly_sheep_spawn_egg": "Extra Woolly Sheep Spawn Egg",
+  "block.woollywonders.stuffed_white_wool": "Stuffed White Wool",
+  "block.woollywonders.stuffed_orange_wool": "Stuffed Orange Wool",
+  "block.woollywonders.stuffed_magenta_wool": "Stuffed Magenta Wool",
+  "block.woollywonders.stuffed_light_blue_wool": "Stuffed Light Blue Wool",
+  "block.woollywonders.stuffed_yellow_wool": "Stuffed Yellow Wool",
+  "block.woollywonders.stuffed_lime_wool": "Stuffed Lime Wool",
+  "block.woollywonders.stuffed_pink_wool": "Stuffed Pink Wool",
+  "block.woollywonders.stuffed_gray_wool": "Stuffed Gray Wool",
+  "block.woollywonders.stuffed_light_gray_wool": "Stuffed Light Gray Wool",
+  "block.woollywonders.stuffed_cyan_wool": "Stuffed Cyan Wool",
+  "block.woollywonders.stuffed_purple_wool": "Stuffed Purple Wool",
+  "block.woollywonders.stuffed_blue_wool": "Stuffed Blue Wool",
+  "block.woollywonders.stuffed_brown_wool": "Stuffed Brown Wool",
+  "block.woollywonders.stuffed_green_wool": "Stuffed Green Wool",
+  "block.woollywonders.stuffed_red_wool": "Stuffed Red Wool",
+  "block.woollywonders.stuffed_black_wool": "Stuffed Black Wool"
 }
