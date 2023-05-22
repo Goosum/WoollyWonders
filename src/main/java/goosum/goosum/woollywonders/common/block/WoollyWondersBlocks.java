@@ -2,6 +2,7 @@ package goosum.goosum.woollywonders.common.block;
 
 import goosum.goosum.woollywonders.WoollyWonders;
 import goosum.goosum.woollywonders.WoollyWondersCreativeModeTab;
+import goosum.goosum.woollywonders.common.block.stuffed_animals.SheepStuffedAnimalBlock;
 import goosum.goosum.woollywonders.common.item.WoollyWondersItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -54,6 +55,14 @@ public class WoollyWondersBlocks {
             () -> new Block(BlockBehaviour.Properties.of(Material.WOOL, MaterialColor.COLOR_RED).strength(0.8F).sound(SoundType.WOOL)));
     public static final RegistryObject<Block> STUFFED_BLACK_WOOL = registerBlock("stuffed_black_wool",
             () -> new Block(BlockBehaviour.Properties.of(Material.WOOL, MaterialColor.COLOR_BLACK).strength(0.8F).sound(SoundType.WOOL)));
+
+    public static final RegistryObject<Block> SHEEP_STUFFED_ANIMAL = registerBlock("sheep_stuffed_animal",
+            () -> new SheepStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
+                    .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
+    public static final RegistryObject<Block> WOOLLY_WORKSHOP = registerBlock("woolly_workshop",
+            () -> new WoollyWorkshopBlock(BlockBehaviour.Properties.of(Material.WOOD)
+                    .strength(2.0F).sound(SoundType.WOOD).noOcclusion()));
+
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

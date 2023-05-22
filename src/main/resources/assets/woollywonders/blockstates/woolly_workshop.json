@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "woollywonders:block/woolly_workshop"
+    },
+    "facing=south": {
+      "model": "woollywonders:block/woolly_workshop",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "woollywonders:block/woolly_workshop",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "woollywonders:block/woolly_workshop",
+      "y": 90
+    }
+  }
+}
