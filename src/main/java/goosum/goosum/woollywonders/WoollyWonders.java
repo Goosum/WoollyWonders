@@ -4,6 +4,9 @@ import com.mojang.logging.LogUtils;
 import goosum.goosum.woollywonders.common.block.WoollyWondersBlocks;
 import goosum.goosum.woollywonders.common.entity.WoollyWondersEntities;
 import goosum.goosum.woollywonders.common.item.WoollyWondersItems;
+import goosum.goosum.woollywonders.common.recipe.WoollyWondersRecipeTypes;
+import goosum.goosum.woollywonders.common.recipe.WoollyWondersRecipes;
+import goosum.goosum.woollywonders.common.screen.WoollyWondersMenus;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -32,6 +35,9 @@ public class WoollyWonders
         WoollyWondersItems.register(modEventBus);
         WoollyWondersEntities.register(modEventBus);
         WoollyWondersBlocks.register(modEventBus);
+        WoollyWondersMenus.register(modEventBus);
+        WoollyWondersRecipes.register(modEventBus);
+        WoollyWondersRecipeTypes.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

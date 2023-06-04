@@ -1,8 +1,8 @@
-package goosum.goosum.woollywonders.client.renderer;
+package goosum.goosum.woollywonders.common.client.renderer;
 
 import goosum.goosum.woollywonders.WoollyWonders;
-import goosum.goosum.woollywonders.client.model.ExtraWoollySheepModel;
-import goosum.goosum.woollywonders.client.renderer.layer.ExtraWoollySheepFurLayer;
+import goosum.goosum.woollywonders.common.client.model.ExtraWoollySheepModel;
+import goosum.goosum.woollywonders.common.client.renderer.layer.ExtraWoollySheepFurLayer;
 import goosum.goosum.woollywonders.common.entity.ExtraWoollySheepEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;

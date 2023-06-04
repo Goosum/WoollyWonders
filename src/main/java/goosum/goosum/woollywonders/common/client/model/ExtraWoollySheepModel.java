@@ -1,4 +1,4 @@
-package goosum.goosum.woollywonders.client.model;
+package goosum.goosum.woollywonders.common.client.model;
 
 import goosum.goosum.woollywonders.WoollyWonders;
 import goosum.goosum.woollywonders.common.entity.ExtraWoollySheepEntity;
