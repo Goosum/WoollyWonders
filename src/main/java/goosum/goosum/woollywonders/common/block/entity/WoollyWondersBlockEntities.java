@@ -1,4 +1,4 @@
-/*
+
 package goosum.goosum.woollywonders.common.block.entity;
 
 import goosum.goosum.woollywonders.WoollyWonders;
@@ -23,4 +23,3 @@ public class WoollyWondersBlockEntities {
 
 
 }
-*/

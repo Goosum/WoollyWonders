@@ -1,21 +1,24 @@
 package goosum.goosum.woollywonders.common.block;
 
+import goosum.goosum.woollywonders.common.block.entity.WoollyWondersBlockEntities;
+import goosum.goosum.woollywonders.common.block.entity.WoollyWorkshopBlockEntity;
 import goosum.goosum.woollywonders.common.screen.WoollyWorkshopMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -23,11 +26,11 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
-public class WoollyWorkshopBlock extends Block {
+public class WoollyWorkshopBlock extends BaseEntityBlock {
 
-    private static final Component CONTAINER_TITLE = Component.translatable("container.woollywonders.woollyworkshop");
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     private static final VoxelShape SHAPE = Block.box(1, 0,1, 15, 15, 15);
 
@@ -64,24 +67,54 @@ public class WoollyWorkshopBlock extends Block {
         return pState.setValue(FACING, pMirror.getRotation(pState.getValue(FACING)).rotate(pState.getValue(FACING)));
     }
 
-    // Usage/Menu
+    // BLOCK ENTITY
 
 
     @Override
-    public InteractionResult use(BlockState pBlockState, Level pLevel, BlockPos pBlockPos, Player pPlayer, InteractionHand pInteractionHand, BlockHitResult pBlockHitResult) {
-        if(pLevel.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else {
-            pPlayer.openMenu(pBlockState.getMenuProvider(pLevel, pBlockPos));
-            return InteractionResult.CONSUME;
+    public RenderShape getRenderShape(BlockState pBlockState) {
+        return RenderShape.MODEL;
+    }
+
+    /* If the BlockState is not equal to the other one(?) and the Block is an instance of our Block Entity call the drops method
+    * to drop the contents of the inventory. */
+    @Override
+    public void onRemove(BlockState pBlockState, Level pLevel, BlockPos pBlockPos, BlockState pNewBlockState, boolean pIsMoving) {
+        if (pBlockState.getBlock() != pNewBlockState.getBlock()) {
+            BlockEntity blockEntity = pLevel.getBlockEntity(pBlockPos);
+            if(blockEntity instanceof WoollyWorkshopBlockEntity) {
+                ((WoollyWorkshopBlockEntity) blockEntity).drops();
+            }
         }
+        super.onRemove(pBlockState, pLevel, pBlockPos, pNewBlockState, pIsMoving);
+    }
+
+
+    /* If the level is not client side and the block is an instance of our BlockEntity than it will have the client open a screen for
+    * the player at that block position. Otherwise, it will throw an error. */
+    @Override
+    public InteractionResult use(BlockState pBlockState, Level pLevel, BlockPos pBlockPos, Player pPlayer, InteractionHand pInteractionHand, BlockHitResult pBlockHitResult) {
+        if(!pLevel.isClientSide()) {
+            BlockEntity blockEntity = pLevel.getBlockEntity(pBlockPos);
+            if(blockEntity instanceof WoollyWorkshopBlockEntity) {
+                NetworkHooks.openScreen((ServerPlayer) pPlayer, (WoollyWorkshopBlockEntity) blockEntity, pBlockPos);
+            } else {
+                throw new IllegalStateException("Our Container provider is missing!");
+            }
+        }
+        return InteractionResult.sidedSuccess(pLevel.isClientSide());
+    }
+
+    /* Tell the game this block is a new instance of the WoollyWorkshopBlockEntity. */
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pBlockState, BlockState pBlockPos) {
+        return new WoollyWorkshopBlockEntity(pBlockState, pBlockPos);
     }
 
     @Nullable
     @Override
-    public MenuProvider getMenuProvider(BlockState pBlockState, Level pLevel, BlockPos pBlockPos) {
-        return new SimpleMenuProvider((pInt, pInventory, pPlayer) -> new WoollyWorkshopMenu(pInt, pInventory, ContainerLevelAccess.create(pLevel, pBlockPos)), CONTAINER_TITLE);
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pBlockState, BlockEntityType<T> pBlockEntityType) {
+        return createTickerHelper(pBlockEntityType, WoollyWondersBlockEntities.WOOLLY_WORKSHOP_BLOCK_ENTITY.get(),
+                WoollyWorkshopBlockEntity::tick);
     }
-
-
 }

@@ -1,0 +1,11 @@
+{
+  "type": "woollywonders:woolly_workshop",
+  "ingredients": [
+    {
+      "item": "woollywonders:stuffed_white_wool"
+    }
+  ],
+  "output": {
+    "item": "woollywonders:sheep_stuffed_animal"
+  }
+}

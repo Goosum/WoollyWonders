@@ -2,11 +2,13 @@ package goosum.goosum.woollywonders;
 
 import com.mojang.logging.LogUtils;
 import goosum.goosum.woollywonders.common.block.WoollyWondersBlocks;
+import goosum.goosum.woollywonders.common.block.entity.WoollyWondersBlockEntities;
 import goosum.goosum.woollywonders.common.entity.WoollyWondersEntities;
 import goosum.goosum.woollywonders.common.item.WoollyWondersItems;
-import goosum.goosum.woollywonders.common.recipe.WoollyWondersRecipeTypes;
 import goosum.goosum.woollywonders.common.recipe.WoollyWondersRecipes;
 import goosum.goosum.woollywonders.common.screen.WoollyWondersMenus;
+import goosum.goosum.woollywonders.common.screen.WoollyWorkshopScreen;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -36,8 +38,8 @@ public class WoollyWonders
         WoollyWondersEntities.register(modEventBus);
         WoollyWondersBlocks.register(modEventBus);
         WoollyWondersMenus.register(modEventBus);
+        WoollyWondersBlockEntities.register(modEventBus);
         WoollyWondersRecipes.register(modEventBus);
-        WoollyWondersRecipeTypes.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -65,7 +67,7 @@ public class WoollyWonders
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            MenuScreens.register(WoollyWondersMenus.WOOLLY_WORKSHOP_MENU.get(), WoollyWorkshopScreen::new);
         }
     }
 }

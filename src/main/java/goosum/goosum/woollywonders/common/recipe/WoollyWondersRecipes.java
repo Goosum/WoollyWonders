@@ -2,7 +2,6 @@ package goosum.goosum.woollywonders.common.recipe;
 
 import goosum.goosum.woollywonders.WoollyWonders;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.SingleItemRecipe;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -13,10 +12,9 @@ public class WoollyWondersRecipes {
             DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, WoollyWonders.MODID);
 
     public static final RegistryObject<RecipeSerializer<WoollyWorkshopRecipe>> WOOLLY_WORKSHOP_SERIALIZER =
-            SERIALIZERS.register("woolly_workshopping", () -> WoollyWorkshopRecipe.Serializer.INSTANCE);
+            SERIALIZERS.register("woolly_workshop", () -> WoollyWorkshopRecipe.Serializer.INSTANCE);
 
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
     }
-
 }

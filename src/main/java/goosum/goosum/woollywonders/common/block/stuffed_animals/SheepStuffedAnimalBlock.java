@@ -23,7 +23,7 @@ public class SheepStuffedAnimalBlock extends HorizontalDirectionalBlock {
         super(pProperties);
     }
 
-    private static final VoxelShape SHAPE = Block.box(3, 0,5, 9, 11, 11);
+    private static final VoxelShape SHAPE = Block.box(5, 0,5, 11, 11, 11);
 
     @Override
     public VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
