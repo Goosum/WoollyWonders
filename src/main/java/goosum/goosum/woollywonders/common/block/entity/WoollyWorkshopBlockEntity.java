@@ -51,6 +51,7 @@ public class WoollyWorkshopBlockEntity extends BlockEntity implements MenuProvid
     private int progress = 0;
     private int maxProgress = 20;
 
+
     public WoollyWorkshopBlockEntity(BlockPos pBlockPos, BlockState pBlockState) {
         super(WoollyWondersBlockEntities.WOOLLY_WORKSHOP_BLOCK_ENTITY.get(), pBlockPos, pBlockState);
         this.data = new ContainerData() {
@@ -156,7 +157,7 @@ public class WoollyWorkshopBlockEntity extends BlockEntity implements MenuProvid
 
         if(hasRecipe(pBlockEntity)) {
             pBlockEntity.itemHandler.extractItem(0, 1, false);
-            //pBlockEntity.itemHandler.extractItem(1, 1, false);
+            pBlockEntity.itemHandler.extractItem(1, 1, false);
             pBlockEntity.itemHandler.setStackInSlot(2, new ItemStack(recipe.get().getResultItem().getItem(),
                     pBlockEntity.itemHandler.getStackInSlot(2).getCount() + 1));
         }

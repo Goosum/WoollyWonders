@@ -33,7 +33,7 @@ public class WoollyWorkshopRecipe implements Recipe<SimpleContainer> {
         if(pLevel.isClientSide) {
           return false;
         };
-        return recipeItems.get(0).test(pContainer.getItem(0));
+        return recipeItems.get(0).test(pContainer.getItem(0)) && recipeItems.get(1).test(pContainer.getItem(1));
     }
 
     // returns result of the recipe
@@ -84,7 +84,7 @@ public class WoollyWorkshopRecipe implements Recipe<SimpleContainer> {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "output"));
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(1, Ingredient.EMPTY);
+            NonNullList<Ingredient> inputs = NonNullList.withSize(2, Ingredient.EMPTY);
 
             for(int i = 0; i < inputs.size(); ++i) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));

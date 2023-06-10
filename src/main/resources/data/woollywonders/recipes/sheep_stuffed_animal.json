@@ -3,6 +3,9 @@
   "ingredients": [
     {
       "item": "woollywonders:stuffed_white_wool"
+    },
+    {
+      "item": "minecraft:mutton"
     }
   ],
   "output": {
