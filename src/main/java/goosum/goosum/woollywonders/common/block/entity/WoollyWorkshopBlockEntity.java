@@ -2,6 +2,8 @@
 package goosum.goosum.woollywonders.common.block.entity;
 
 import goosum.goosum.woollywonders.common.block.WoollyWondersBlocks;
+import goosum.goosum.woollywonders.common.block.stuffed_animals.AbstractStuffedAnimalBlock;
+import goosum.goosum.woollywonders.common.block.stuffed_animals.SheepStuffedAnimalBlock;
 import goosum.goosum.woollywonders.common.item.WoollyWondersItems;
 import goosum.goosum.woollywonders.common.recipe.WoollyWorkshopRecipe;
 import goosum.goosum.woollywonders.common.screen.WoollyWondersMenus;
@@ -21,8 +23,10 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -155,14 +159,86 @@ public class WoollyWorkshopBlockEntity extends BlockEntity implements MenuProvid
         Optional<WoollyWorkshopRecipe> recipe =
                 level.getRecipeManager().getRecipeFor(WoollyWorkshopRecipe.Type.INSTANCE, inventory, level);
 
+        Item recipeResult = recipe.get().getResultItem().getItem();
+
+
         if(hasRecipe(pBlockEntity)) {
-            pBlockEntity.itemHandler.extractItem(0, 1, false);
-            pBlockEntity.itemHandler.extractItem(1, 1, false);
-            pBlockEntity.itemHandler.setStackInSlot(2, new ItemStack(recipe.get().getResultItem().getItem(),
-                    pBlockEntity.itemHandler.getStackInSlot(2).getCount() + 1));
+            if(AbstractStuffedAnimalBlock.byItem(recipeResult) instanceof AbstractStuffedAnimalBlock) {
+                AbstractStuffedAnimalBlock.Rarity resultRarity =
+                        ((AbstractStuffedAnimalBlock) AbstractStuffedAnimalBlock.byItem(recipeResult)).getRarity();
+
+                boolean extracted = false;
+
+                switch (resultRarity) {
+                    case CHARMING -> {
+                        extracted = extractStuffedAnimalRecipe(pBlockEntity.itemHandler, 8, 64);
+                    }
+                    case DARLING -> {
+                        extracted = extractStuffedAnimalRecipe(pBlockEntity.itemHandler, 16, 48);
+                    }
+                    case ADORABLE -> {
+                        extracted = extractStuffedAnimalRecipe(pBlockEntity.itemHandler, 32, 32);
+                    }
+                    case IRRESISTIBLE -> {
+                        extracted = extractStuffedAnimalRecipe(pBlockEntity.itemHandler, 64, 1);
+                    }
+                }
+                if(extracted) {
+                    pBlockEntity.itemHandler.setStackInSlot(2, new ItemStack(recipe.get().getResultItem().getItem(),
+                            pBlockEntity.itemHandler.getStackInSlot(2).getCount() + 1));
+                }
+            }
         }
 
         pBlockEntity.resetProgress();
+    }
+
+    private boolean extractStuffedAnimalRecipe(ItemStackHandler pItemHandler, int slot1amt, int slot2amt) {
+        if(pItemHandler.getStackInSlot(0).getCount() >= slot1amt && pItemHandler.getStackInSlot(1).getCount() >= slot2amt) {
+            pItemHandler.extractItem(0, slot1amt, false);
+            pItemHandler.extractItem(1, slot2amt, false);
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean checkRarityAmounts(BlockEntity pBlockEntity, ItemStackHandler pItemHandler) {
+        Level level = pBlockEntity.getLevel();
+        SimpleContainer inventory = new SimpleContainer(pItemHandler.getSlots());
+
+        for(int i = 0; i < pItemHandler.getSlots(); i++) {
+            inventory.setItem(i, pItemHandler.getStackInSlot(i));
+        }
+        Optional<WoollyWorkshopRecipe> recipe =
+                level.getRecipeManager().getRecipeFor(WoollyWorkshopRecipe.Type.INSTANCE, inventory, level);
+
+        Item recipeResult = recipe.get().getResultItem().getItem();
+
+        if(AbstractStuffedAnimalBlock.byItem(recipeResult) instanceof AbstractStuffedAnimalBlock) {
+            AbstractStuffedAnimalBlock.Rarity resultRarity =
+                    ((AbstractStuffedAnimalBlock) AbstractStuffedAnimalBlock.byItem(recipeResult)).getRarity();
+
+            switch (resultRarity) {
+                case CHARMING -> {
+                    if(pItemHandler.getStackInSlot(0).getCount() >= 8 && pItemHandler.getStackInSlot(1).getCount() >= 64)
+                        return true;
+                }
+                case DARLING -> {
+                    if(pItemHandler.getStackInSlot(0).getCount() >= 16 && pItemHandler.getStackInSlot(1).getCount() >= 48)
+                        return true;
+                }
+                case ADORABLE -> {
+                    if(pItemHandler.getStackInSlot(0).getCount() >= 32 && pItemHandler.getStackInSlot(1).getCount() >= 32)
+                        return true;
+                }
+                case IRRESISTIBLE -> {
+                    if(pItemHandler.getStackInSlot(0).getCount() >= 64 && pItemHandler.getStackInSlot(1).getCount() >= 1)
+                        return true;
+                }
+            }
+
+        }
+        return false;
     }
 
 
@@ -198,7 +274,7 @@ public class WoollyWorkshopBlockEntity extends BlockEntity implements MenuProvid
         if(pLevel.isClientSide()) {
             return;
         }
-        if(pBlockEntity.hasRecipe(pBlockEntity)) {
+        if(pBlockEntity.hasRecipe(pBlockEntity) && checkRarityAmounts(pBlockEntity, pBlockEntity.itemHandler)) {
             pBlockEntity.progress++;
             setChanged(pLevel, pBlockPos, pBlockState);
 

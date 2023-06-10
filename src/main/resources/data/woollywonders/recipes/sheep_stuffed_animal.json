@@ -2,7 +2,7 @@
   "type": "woollywonders:woolly_workshop",
   "ingredients": [
     {
-      "item": "woollywonders:stuffed_white_wool"
+      "tag": "woollywonders:stuffed_wool"
     },
     {
       "item": "minecraft:mutton"

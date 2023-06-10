@@ -61,6 +61,7 @@ public class AbstractStuffedAnimalBlock extends HorizontalDirectionalBlock {
     public void setRarity(Rarity pRarity) {
         rarity = pRarity;
     }
+
     public Rarity getRarity() {
         return rarity;
     }
