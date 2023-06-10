@@ -2,6 +2,9 @@ package goosum.goosum.woollywonders.common.block;
 
 import goosum.goosum.woollywonders.WoollyWonders;
 import goosum.goosum.woollywonders.WoollyWondersCreativeModeTab;
+import goosum.goosum.woollywonders.common.block.stuffed_animals.ChickenStuffedAnimalBlock;
+import goosum.goosum.woollywonders.common.block.stuffed_animals.CowStuffedAnimalBlock;
+import goosum.goosum.woollywonders.common.block.stuffed_animals.PigStuffedAnimalBlock;
 import goosum.goosum.woollywonders.common.block.stuffed_animals.SheepStuffedAnimalBlock;
 import goosum.goosum.woollywonders.common.item.WoollyWondersItems;
 import net.minecraft.world.item.BlockItem;
@@ -58,6 +61,15 @@ public class WoollyWondersBlocks {
 
     public static final RegistryObject<Block> SHEEP_STUFFED_ANIMAL = registerBlock("sheep_stuffed_animal",
             () -> new SheepStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
+                    .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
+    public static final RegistryObject<Block> CHICKEN_STUFFED_ANIMAL = registerBlock("chicken_stuffed_animal",
+            () -> new ChickenStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
+                    .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
+    public static final RegistryObject<Block> COW_STUFFED_ANIMAL = registerBlock("cow_stuffed_animal",
+            () -> new CowStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
+                    .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
+    public static final RegistryObject<Block> PIG_STUFFED_ANIMAL = registerBlock("pig_stuffed_animal",
+            () -> new PigStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
                     .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
     public static final RegistryObject<Block> WOOLLY_WORKSHOP = registerBlock("woolly_workshop",
             () -> new WoollyWorkshopBlock(BlockBehaviour.Properties.of(Material.WOOD)

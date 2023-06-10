@@ -1,0 +1,14 @@
+{
+  "type": "woollywonders:woolly_workshop",
+  "ingredients": [
+    {
+      "tag": "woollywonders:stuffed_wool"
+    },
+    {
+      "item": "minecraft:porkchop"
+    }
+  ],
+  "output": {
+    "item": "woollywonders:pig_stuffed_animal"
+  }
+}

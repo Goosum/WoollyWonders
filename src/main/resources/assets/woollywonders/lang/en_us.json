@@ -20,6 +20,9 @@
   "block.woollywonders.stuffed_red_wool": "Stuffed Red Wool",
   "block.woollywonders.stuffed_black_wool": "Stuffed Black Wool",
   "block.woollywonders.sheep_stuffed_animal": "Sheep Stuffed Animal",
+  "block.woollywonders.chicken_stuffed_animal": "Chicken Stuffed Animal",
+  "block.woollywonders.cow_stuffed_animal": "Cow Stuffed Animal",
+  "block.woollywonders.pig_stuffed_animal": "Pig Stuffed Animal",
   "block.woollywonders.woolly_workshop": "Woolly Workshop",
   "container.woollywonders.woollyworkshop": "Woolly Workshop"
 }
