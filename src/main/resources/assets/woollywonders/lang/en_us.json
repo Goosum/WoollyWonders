@@ -26,6 +26,10 @@
   "block.woollywonders.cod_stuffed_animal": "Cod Stuffed Animal",
   "block.woollywonders.salmon_stuffed_animal": "Salmon Stuffed Animal",
   "block.woollywonders.horse_stuffed_animal": "Horse Stuffed Animal",
+  "block.woollywonders.rabbit_stuffed_animal": "Rabbit Stuffed Animal",
+  "block.woollywonders.squid_stuffed_animal": "Squid Stuffed Animal",
+  "block.woollywonders.ocelot_stuffed_animal": "Ocelot Stuffed Animal",
+  "block.woollywonders.fox_stuffed_animal": "Fox Stuffed Animal",
   "block.woollywonders.woolly_workshop": "Woolly Workshop",
   "container.woollywonders.woollyworkshop": "Woolly Workshop"
 }
