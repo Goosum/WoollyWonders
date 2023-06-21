@@ -89,6 +89,9 @@ public class WoollyWondersBlocks {
     public static final RegistryObject<Block> FOX_STUFFED_ANIMAL = registerBlock("fox_stuffed_animal",
             () -> new FoxStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
                     .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
+    public static final RegistryObject<Block> WOLF_STUFFED_ANIMAL = registerBlock("wolf_stuffed_animal",
+            () -> new WolfStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
+                    .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
     public static final RegistryObject<Block> WOOLLY_WORKSHOP = registerBlock("woolly_workshop",
             () -> new WoollyWorkshopBlock(BlockBehaviour.Properties.of(Material.WOOD)
                     .strength(2.0F).sound(SoundType.WOOD).noOcclusion()));
