@@ -2,10 +2,7 @@ package goosum.goosum.woollywonders.common.block;
 
 import goosum.goosum.woollywonders.WoollyWonders;
 import goosum.goosum.woollywonders.WoollyWondersCreativeModeTab;
-import goosum.goosum.woollywonders.common.block.stuffed_animals.ChickenStuffedAnimalBlock;
-import goosum.goosum.woollywonders.common.block.stuffed_animals.CowStuffedAnimalBlock;
-import goosum.goosum.woollywonders.common.block.stuffed_animals.PigStuffedAnimalBlock;
-import goosum.goosum.woollywonders.common.block.stuffed_animals.SheepStuffedAnimalBlock;
+import goosum.goosum.woollywonders.common.block.stuffed_animals.*;
 import goosum.goosum.woollywonders.common.item.WoollyWondersItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -70,6 +67,15 @@ public class WoollyWondersBlocks {
                     .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
     public static final RegistryObject<Block> PIG_STUFFED_ANIMAL = registerBlock("pig_stuffed_animal",
             () -> new PigStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
+                    .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
+    public static final RegistryObject<Block> COD_STUFFED_ANIMAL = registerBlock("cod_stuffed_animal",
+            () -> new CodStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
+                    .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
+    public static final RegistryObject<Block> SALMON_STUFFED_ANIMAL = registerBlock("salmon_stuffed_animal",
+            () -> new SalmonStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
+                    .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
+    public static final RegistryObject<Block> HORSE_STUFFED_ANIMAL = registerBlock("horse_stuffed_animal",
+            () -> new HorseStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
                     .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
     public static final RegistryObject<Block> WOOLLY_WORKSHOP = registerBlock("woolly_workshop",
             () -> new WoollyWorkshopBlock(BlockBehaviour.Properties.of(Material.WOOD)

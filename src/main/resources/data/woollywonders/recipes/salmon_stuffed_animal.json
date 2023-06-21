@@ -1,0 +1,14 @@
+{
+  "type": "woollywonders:woolly_workshop",
+  "ingredients": [
+    {
+      "tag": "woollywonders:stuffed_wool"
+    },
+    {
+      "item": "minecraft:salmon"
+    }
+  ],
+  "output": {
+    "item": "woollywonders:salmon_stuffed_animal"
+  }
+}
