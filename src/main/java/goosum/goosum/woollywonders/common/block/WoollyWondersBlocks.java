@@ -92,6 +92,18 @@ public class WoollyWondersBlocks {
     public static final RegistryObject<Block> WOLF_STUFFED_ANIMAL = registerBlock("wolf_stuffed_animal",
             () -> new WolfStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
                     .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
+    public static final RegistryObject<Block> SPIDER_STUFFED_ANIMAL = registerBlock("spider_stuffed_animal",
+            () -> new SpiderStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
+                    .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
+    public static final RegistryObject<Block> CREEPER_STUFFED_ANIMAL = registerBlock("creeper_stuffed_animal",
+            () -> new CreeperStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
+                    .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
+    public static final RegistryObject<Block> SKELETON_STUFFED_ANIMAL = registerBlock("skeleton_stuffed_animal",
+            () -> new SkeletonStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
+                    .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
+    public static final RegistryObject<Block> ZOMBIE_STUFFED_ANIMAL = registerBlock("zombie_stuffed_animal",
+            () -> new ZombieStuffedAnimalBlock(BlockBehaviour.Properties.of(Material.WOOL)
+                    .strength(0.8F).sound(SoundType.WOOL).noOcclusion()));
     public static final RegistryObject<Block> WOOLLY_WORKSHOP = registerBlock("woolly_workshop",
             () -> new WoollyWorkshopBlock(BlockBehaviour.Properties.of(Material.WOOD)
                     .strength(2.0F).sound(SoundType.WOOD).noOcclusion()));

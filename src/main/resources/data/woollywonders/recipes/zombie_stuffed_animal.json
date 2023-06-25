@@ -1,0 +1,14 @@
+{
+  "type": "woollywonders:woolly_workshop",
+  "ingredients": [
+    {
+      "tag": "woollywonders:stuffed_wool"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    }
+  ],
+  "output": {
+    "item": "woollywonders:zombie_stuffed_animal"
+  }
+}

@@ -27,6 +27,10 @@ public class WoollyWorkshopRecipe implements Recipe<SimpleContainer> {
         this.recipeItems = recipeItems;
     }
 
+    @Override
+    public NonNullList<Ingredient> getIngredients() {
+        return recipeItems;
+    }
 
     @Override
     public boolean matches(SimpleContainer pContainer, Level pLevel) {

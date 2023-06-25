@@ -31,6 +31,10 @@
   "block.woollywonders.ocelot_stuffed_animal": "Ocelot Stuffed Animal",
   "block.woollywonders.fox_stuffed_animal": "Fox Stuffed Animal",
   "block.woollywonders.wolf_stuffed_animal": "Wolf Stuffed Animal",
+  "block.woollywonders.spider_stuffed_animal": "Spider Stuffed Animal",
+  "block.woollywonders.creeper_stuffed_animal": "Creeper Stuffed Animal",
+  "block.woollywonders.skeleton_stuffed_animal": "Skeleton Stuffed Animal",
+  "block.woollywonders.zombie_stuffed_animal": "Zombie Stuffed Animal",
   "block.woollywonders.woolly_workshop": "Woolly Workshop",
   "container.woollywonders.woollyworkshop": "Woolly Workshop"
 }

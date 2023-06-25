@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "X": {
+      "item": "woollywonders:woolly_clump"
+    },
+    "O": {
+      "tag": "woollywonders:stuffed_wool"
+    }
+  },
+  "pattern": [
+    "OOO",
+    "#X#",
+    "# #"
+  ],
+  "result": {
+    "item": "woollywonders:woolly_workshop"
+  }
+}
