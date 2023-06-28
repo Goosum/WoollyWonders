@@ -2,7 +2,7 @@
   "type": "woollywonders:woolly_workshop",
   "ingredients": [
     {
-      "tag": "woollywonders:stuffed_wool"
+      "item": "woollywonders:charming_stuffed_animal_template"
     },
     {
       "item": "minecraft:arrow"

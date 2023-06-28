@@ -19,16 +19,15 @@ import net.minecraft.world.item.crafting.Ingredient;
 public class WoollyWorkshopRecipeCategory implements IRecipeCategory<WoollyWorkshopRecipe> {
     public static final ResourceLocation UID = new ResourceLocation(WoollyWonders.MODID, "woolly_workshop");
     public static final ResourceLocation TEXTURE_LOCATION =
-            new ResourceLocation(WoollyWonders.MODID, "textures/gui/container/woolly_workshop_gui.png");
+            new ResourceLocation(WoollyWonders.MODID, "textures/gui/container/woolly_workshop_gui_jei.png");
 
     private final IDrawable background;
     private final IDrawable icon;
 
     public WoollyWorkshopRecipeCategory(IGuiHelper pHelper) {
-        this.background = pHelper.createDrawable(TEXTURE_LOCATION, 0, 0, 176, 85);
+        this.background = pHelper.createDrawable(TEXTURE_LOCATION, 0, 0, 176, 82);
         this.icon = pHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(WoollyWondersBlocks.WOOLLY_WORKSHOP.get()));
     }
-
 
     @Override
     public RecipeType<WoollyWorkshopRecipe> getRecipeType() {
@@ -52,9 +51,6 @@ public class WoollyWorkshopRecipeCategory implements IRecipeCategory<WoollyWorks
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, WoollyWorkshopRecipe recipe, IFocusGroup focuses) {
-        /*Ingredient slot1Ing = recipe.getIngredients().get(0);
-        Ingredient slot2Ing;
-        Ingredient slot3Ing;*/
         builder.addSlot(RecipeIngredientRole.INPUT, 38, 34).addIngredients(recipe.getIngredients().get(0));
         builder.addSlot(RecipeIngredientRole.INPUT, 71, 34).addIngredients(recipe.getIngredients().get(1));
         builder.addSlot(RecipeIngredientRole.OUTPUT, 121, 34).addItemStack(recipe.getResultItem());

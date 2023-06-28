@@ -1,21 +1,15 @@
 
 package goosum.goosum.woollywonders.common.block.entity;
 
-import goosum.goosum.woollywonders.common.block.WoollyWondersBlocks;
 import goosum.goosum.woollywonders.common.block.stuffed_animals.AbstractStuffedAnimalBlock;
-import goosum.goosum.woollywonders.common.block.stuffed_animals.SheepStuffedAnimalBlock;
-import goosum.goosum.woollywonders.common.item.WoollyWondersItems;
 import goosum.goosum.woollywonders.common.recipe.WoollyWorkshopRecipe;
-import goosum.goosum.woollywonders.common.screen.WoollyWondersMenus;
 import goosum.goosum.woollywonders.common.screen.WoollyWorkshopMenu;
-import goosum.goosum.woollywonders.util.WoollyWondersTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -26,7 +20,6 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;

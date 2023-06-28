@@ -21,6 +21,17 @@ public class WoollyWondersItems {
             () -> new ForgeSpawnEggItem(WoollyWondersEntities.EXTRA_WOOLLY_SHEEP, 0xdedede, 0xe39191,
             new Item.Properties().tab(WoollyWondersCreativeModeTab.WOOLLY_WONDERS_TAB)));
 
+    public static final RegistryObject<Item> CHARMING_STUFFED_ANIMAL_TEMPLATE = ITEMS.register("charming_stuffed_animal_template",
+            () -> new Item(new Item.Properties().tab(WoollyWondersCreativeModeTab.WOOLLY_WONDERS_TAB)));
+    public static final RegistryObject<Item> DARLING_STUFFED_ANIMAL_TEMPLATE = ITEMS.register("darling_stuffed_animal_template",
+            () -> new Item(new Item.Properties().tab(WoollyWondersCreativeModeTab.WOOLLY_WONDERS_TAB)));
+    public static final RegistryObject<Item> ADORABLE_STUFFED_ANIMAL_TEMPLATE = ITEMS.register("adorable_stuffed_animal_template",
+            () -> new Item(new Item.Properties().tab(WoollyWondersCreativeModeTab.WOOLLY_WONDERS_TAB)));
+    public static final RegistryObject<Item> IRRESISTIBLE_STUFFED_ANIMAL_TEMPLATE = ITEMS.register("irresistible_stuffed_animal_template",
+            () -> new Item(new Item.Properties().tab(WoollyWondersCreativeModeTab.WOOLLY_WONDERS_TAB)));
+    public static final RegistryObject<Item> MOB_ESSENCE = ITEMS.register("mob_essence",
+            () -> new Item(new Item.Properties().tab(WoollyWondersCreativeModeTab.WOOLLY_WONDERS_TAB)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

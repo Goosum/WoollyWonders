@@ -1,4 +1,4 @@
-package goosum.goosum.woollywonders.util;
+package goosum.goosum.woollywonders.common.util;
 
 import goosum.goosum.woollywonders.WoollyWonders;
 import net.minecraft.resources.ResourceLocation;
