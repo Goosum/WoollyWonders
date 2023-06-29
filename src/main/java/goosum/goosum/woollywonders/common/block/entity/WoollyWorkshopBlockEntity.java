@@ -40,7 +40,7 @@ public class WoollyWorkshopBlockEntity extends BlockEntity implements MenuProvid
         }
     };
     /* Lazy because block inventory may never be used. Optional is a container that might be non-null and should be used as a method return
-    * type. No variable of Optional type should be null. It should point to a different Optional variable value. */
+     * type. No variable of Optional type should be null. It should point to a different Optional variable value. */
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
 
@@ -55,9 +55,9 @@ public class WoollyWorkshopBlockEntity extends BlockEntity implements MenuProvid
             @Override
             public int get(int pIndex) {
                 return switch (pIndex) {
-                  case 0 -> WoollyWorkshopBlockEntity.this.progress;
-                  case 1 -> WoollyWorkshopBlockEntity.this.maxProgress;
-                  default -> 0;
+                    case 0 -> WoollyWorkshopBlockEntity.this.progress;
+                    case 1 -> WoollyWorkshopBlockEntity.this.maxProgress;
+                    default -> 0;
                 };
             }
 
@@ -88,11 +88,11 @@ public class WoollyWorkshopBlockEntity extends BlockEntity implements MenuProvid
     }
 
     /* If the capability present is of the basic Forge item handler type then return our lazyItemHandler which is of
-    * implied type IItemHandler. Then call the super getCapability function. */
+     * implied type IItemHandler. Then call the super getCapability function. */
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if(cap == ForgeCapabilities.ITEM_HANDLER) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
             return lazyItemHandler.cast();
         }
 
@@ -107,7 +107,7 @@ public class WoollyWorkshopBlockEntity extends BlockEntity implements MenuProvid
     }
 
     /* Prevents getCapability from returning a value and invalidates all the contained Capabilities. Generally called
-    * when said Capabilities are removed from the world. */
+     * when said Capabilities are removed from the world. */
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
@@ -130,10 +130,10 @@ public class WoollyWorkshopBlockEntity extends BlockEntity implements MenuProvid
 
 
     /* Create an empty SimpleContainer that is the same size as our itemHandler inventory. for every slot get the correct item in
-    * said slot and then drop the contents of the inventory object at the end. */
+     * said slot and then drop the contents of the inventory object at the end. */
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for(int i = 0; i < itemHandler.getSlots(); i++) {
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
             inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
 
@@ -144,94 +144,20 @@ public class WoollyWorkshopBlockEntity extends BlockEntity implements MenuProvid
         Level level = pBlockEntity.level;
         SimpleContainer inventory = new SimpleContainer(pBlockEntity.itemHandler.getSlots());
 
-        for(int i = 0; i < pBlockEntity.itemHandler.getSlots(); i++) {
+        for (int i = 0; i < pBlockEntity.itemHandler.getSlots(); i++) {
             inventory.setItem(i, pBlockEntity.itemHandler.getStackInSlot(i));
         }
 
-
         Optional<WoollyWorkshopRecipe> recipe =
                 level.getRecipeManager().getRecipeFor(WoollyWorkshopRecipe.Type.INSTANCE, inventory, level);
 
-        Item recipeResult = recipe.get().getResultItem().getItem();
-
-
-        if(hasRecipe(pBlockEntity)) {
-            if(AbstractStuffedAnimalBlock.byItem(recipeResult) instanceof AbstractStuffedAnimalBlock) {
-                AbstractStuffedAnimalBlock.Rarity resultRarity =
-                        ((AbstractStuffedAnimalBlock) AbstractStuffedAnimalBlock.byItem(recipeResult)).getRarity();
-
-                boolean extracted = false;
-
-                switch (resultRarity) {
-                    case CHARMING -> {
-                        extracted = extractStuffedAnimalRecipe(pBlockEntity.itemHandler, 8, 64);
-                    }
-                    case DARLING -> {
-                        extracted = extractStuffedAnimalRecipe(pBlockEntity.itemHandler, 16, 48);
-                    }
-                    case ADORABLE -> {
-                        extracted = extractStuffedAnimalRecipe(pBlockEntity.itemHandler, 32, 32);
-                    }
-                    case IRRESISTIBLE -> {
-                        extracted = extractStuffedAnimalRecipe(pBlockEntity.itemHandler, 64, 1);
-                    }
-                }
-                if(extracted) {
-                    pBlockEntity.itemHandler.setStackInSlot(2, new ItemStack(recipe.get().getResultItem().getItem(),
-                            pBlockEntity.itemHandler.getStackInSlot(2).getCount() + 1));
-                }
-            }
+        if (hasRecipe(pBlockEntity)) {
+            pBlockEntity.itemHandler.extractItem(0, 1, false);
+            pBlockEntity.itemHandler.extractItem(1, 1, false);
+            pBlockEntity.itemHandler.setStackInSlot(2, new ItemStack(recipe.get().getResultItem().getItem(),
+                    pBlockEntity.itemHandler.getStackInSlot(2).getCount() + 1));
         }
-
         pBlockEntity.resetProgress();
-    }
-
-    private boolean extractStuffedAnimalRecipe(ItemStackHandler pItemHandler, int slot1amt, int slot2amt) {
-        if(pItemHandler.getStackInSlot(0).getCount() >= slot1amt && pItemHandler.getStackInSlot(1).getCount() >= slot2amt) {
-            pItemHandler.extractItem(0, slot1amt, false);
-            pItemHandler.extractItem(1, slot2amt, false);
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean checkRarityAmounts(BlockEntity pBlockEntity, ItemStackHandler pItemHandler) {
-        Level level = pBlockEntity.getLevel();
-        SimpleContainer inventory = new SimpleContainer(pItemHandler.getSlots());
-
-        for(int i = 0; i < pItemHandler.getSlots(); i++) {
-            inventory.setItem(i, pItemHandler.getStackInSlot(i));
-        }
-        Optional<WoollyWorkshopRecipe> recipe =
-                level.getRecipeManager().getRecipeFor(WoollyWorkshopRecipe.Type.INSTANCE, inventory, level);
-
-        Item recipeResult = recipe.get().getResultItem().getItem();
-
-        if(AbstractStuffedAnimalBlock.byItem(recipeResult) instanceof AbstractStuffedAnimalBlock) {
-            AbstractStuffedAnimalBlock.Rarity resultRarity =
-                    ((AbstractStuffedAnimalBlock) AbstractStuffedAnimalBlock.byItem(recipeResult)).getRarity();
-
-            switch (resultRarity) {
-                case CHARMING -> {
-                    if(pItemHandler.getStackInSlot(0).getCount() >= 8 && pItemHandler.getStackInSlot(1).getCount() >= 64)
-                        return true;
-                }
-                case DARLING -> {
-                    if(pItemHandler.getStackInSlot(0).getCount() >= 16 && pItemHandler.getStackInSlot(1).getCount() >= 48)
-                        return true;
-                }
-                case ADORABLE -> {
-                    if(pItemHandler.getStackInSlot(0).getCount() >= 32 && pItemHandler.getStackInSlot(1).getCount() >= 32)
-                        return true;
-                }
-                case IRRESISTIBLE -> {
-                    if(pItemHandler.getStackInSlot(0).getCount() >= 64 && pItemHandler.getStackInSlot(1).getCount() >= 1)
-                        return true;
-                }
-            }
-
-        }
-        return false;
     }
 
 
@@ -267,7 +193,7 @@ public class WoollyWorkshopBlockEntity extends BlockEntity implements MenuProvid
         if(pLevel.isClientSide()) {
             return;
         }
-        if(pBlockEntity.hasRecipe(pBlockEntity) && checkRarityAmounts(pBlockEntity, pBlockEntity.itemHandler)) {
+        if(pBlockEntity.hasRecipe(pBlockEntity)) {
             pBlockEntity.progress++;
             setChanged(pLevel, pBlockPos, pBlockState);
 

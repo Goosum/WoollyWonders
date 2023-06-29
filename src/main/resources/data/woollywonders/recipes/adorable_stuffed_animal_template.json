@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "tag": "woollywonders:stuffed_wool"
+    },
+    "X": {
+      "item": "woollywonders:darling_stuffed_animal_template"
+    }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "item": "woollywonders:adorable_stuffed_animal_template"
+  }
+}

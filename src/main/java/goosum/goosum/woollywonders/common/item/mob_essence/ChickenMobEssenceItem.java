@@ -1,5 +1,6 @@
-package goosum.goosum.woollywonders.common.item;
+package goosum.goosum.woollywonders.common.item.mob_essence;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -9,14 +10,15 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class MobEssenceItem extends Item {
+public class ChickenMobEssenceItem extends Item {
 
-    public MobEssenceItem(Properties pProperties) {
+    public ChickenMobEssenceItem(Properties pProperties) {
         super(pProperties);
     }
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        pTooltipComponents.add(Component.literal("Chicken").withStyle(ChatFormatting.GRAY));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 }

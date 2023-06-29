@@ -3,6 +3,7 @@ package goosum.goosum.woollywonders.common.item;
 import goosum.goosum.woollywonders.WoollyWonders;
 import goosum.goosum.woollywonders.WoollyWondersCreativeModeTab;
 import goosum.goosum.woollywonders.common.entity.WoollyWondersEntities;
+import goosum.goosum.woollywonders.common.item.mob_essence.ChickenMobEssenceItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -29,8 +30,12 @@ public class WoollyWondersItems {
             () -> new Item(new Item.Properties().tab(WoollyWondersCreativeModeTab.WOOLLY_WONDERS_TAB)));
     public static final RegistryObject<Item> IRRESISTIBLE_STUFFED_ANIMAL_TEMPLATE = ITEMS.register("irresistible_stuffed_animal_template",
             () -> new Item(new Item.Properties().tab(WoollyWondersCreativeModeTab.WOOLLY_WONDERS_TAB)));
-    public static final RegistryObject<Item> MOB_ESSENCE = ITEMS.register("mob_essence",
-            () -> new Item(new Item.Properties().tab(WoollyWondersCreativeModeTab.WOOLLY_WONDERS_TAB)));
+
+    public static final RegistryObject<Item> CHICKEN_SMALL_MOB_ESSENCE = ITEMS.register("chicken_small_mob_essence",
+            () -> new ChickenMobEssenceItem(new Item.Properties().tab(WoollyWondersCreativeModeTab.WOOLLY_WONDERS_TAB)));
+
+    public static final RegistryObject<Item> CHICKEN_LARGE_MOB_ESSENCE = ITEMS.register("chicken_large_mob_essence",
+            () -> new ChickenMobEssenceItem(new Item.Properties().tab(WoollyWondersCreativeModeTab.WOOLLY_WONDERS_TAB)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
