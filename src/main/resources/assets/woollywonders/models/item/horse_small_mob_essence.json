@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "woollywonders:item/horse_small_mob_essence"
+  }
+}

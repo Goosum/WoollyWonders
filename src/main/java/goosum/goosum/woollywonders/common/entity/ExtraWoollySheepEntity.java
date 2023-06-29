@@ -60,7 +60,7 @@ public class ExtraWoollySheepEntity extends Sheep implements IForgeShearable {
 
     @Override
     public Sheep getBreedOffspring(ServerLevel serverLevel, AgeableMob ageableMob) {
-        return null;
+        return super.getBreedOffspring(serverLevel, ageableMob);
     }
 
     @Override
